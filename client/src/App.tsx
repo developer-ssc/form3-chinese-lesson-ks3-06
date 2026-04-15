@@ -1,24 +1,12 @@
 /*
 設計哲學：宋代文人雅集與手卷敘事美學。
-應用層維持單頁式古風簡報體驗，使用淺色宣紙主題承載全文閱讀。
+此專案為單頁式古風簡報，因此直接渲染首頁內容，避免在 GitHub Pages 專案子路徑下誤觸 404 路由。
 */
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/404" component={NotFound} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
 
 function App() {
   return (
@@ -26,7 +14,7 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <Home />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
